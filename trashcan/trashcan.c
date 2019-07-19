@@ -6,18 +6,18 @@
 /*   By: smaddox <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 16:24:56 by smaddox           #+#    #+#             */
-/*   Updated: 2019/07/11 17:44:02 by smaddox          ###   ########.fr       */
+/*   Updated: 2019/07/18 21:10:24 by smaddox          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "trashcan.h"
 
 void new_trash_bag(t_rash_can *my_trashcan)
 {
 	my_trashcan->top = -1;
 }
 
-void mom(t_rash_can *my_trashcan, e_my_type tp, ...)
+void mom(t_rash_can *my_trashcan, t_my_type tp, ...)
 {
 	va_list list;
 	if (!trash_overflow(my_trashcan))

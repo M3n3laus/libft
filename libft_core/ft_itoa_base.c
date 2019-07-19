@@ -6,13 +6,13 @@
 /*   By: smaddox <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 17:13:12 by smaddox           #+#    #+#             */
-/*   Updated: 2019/07/14 18:54:30 by smaddox          ###   ########.fr       */
+/*   Updated: 2019/07/18 19:41:50 by smaddox          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t len(int n, int base)
+static size_t			len(int n, int base)
 {
 	int i;
 
@@ -22,19 +22,19 @@ static size_t len(int n, int base)
 		++i;
 		n /= base;
 	}
-	return(i);
+	return (i);
 }
 
-static char *handle_min(void)
+static char				*handle_min(void)
 {
 	char *str;
 
 	str = ft_strnew(11);
 	ft_strcpy(str, "-2147483648");
-	return(str);
+	return (str);
 }
 
-char *ft_itoa_base(int n, int base)
+char					*ft_itoa_base(int n, int base)
 {
 	char *str;
 	size_t size;
@@ -44,16 +44,16 @@ char *ft_itoa_base(int n, int base)
 	if (sign)
 	{
 		if (n == -2147483648)
-			return(handle_min( ));
+			return (handle_min());
 		n *= -1;
 	}
 	size = len(n, base) + sign;
 	str = ft_strnew(size);
 	str[0] = sign ? '-' : '0';
-	while(n > 0)
+	while (n > 0)
 	{
 		str[--size] = BASE_DIGITS[n % base];
 		n /= base;
 	}
-	return(str);
+	return (str);
 }

@@ -6,7 +6,7 @@
 #    By: smaddox <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/29 11:23:26 by smaddox           #+#    #+#              #
-#    Updated: 2019/07/17 23:11:48 by smaddox          ###   ########.fr        #
+#    Updated: 2019/07/18 21:32:08 by smaddox          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,20 +79,19 @@ libft_core/ft_shortoa.c\
 libft_core/ft_longlongtoa.c\
 libft_core/ft_itoa_base.c\
 libft_core/ft_unsignedlltoa.c\
-ft_printf/_d2.c\
-ft_printf/_X.c\
-ft_printf/_c.c\
-ft_printf/_d.c\
-ft_printf/_f.c\
-ft_printf/_o.c\
-ft_printf/_p.c\
-ft_printf/_s.c\
-ft_printf/_u.c\
-ft_printf/_x.c\
-ft_printf/_pc.c\
+ft_printf/d2flag.c\
+ft_printf/xxflag.c\
+ft_printf/cflag.c\
+ft_printf/dflag.c\
+ft_printf/fflag.c\
+ft_printf/oflag.c\
+ft_printf/pflag.c\
+ft_printf/sflag.c\
+ft_printf/uflag.c\
+ft_printf/xflag.c\
+ft_printf/pcflag.c\
 ft_printf/ft_printf.c\
 ft_printf/parse_utils.c\
-ft_printf/testing_funcs.c\
 ft_printf/string_ops.c\
 trashcan/trashcan.c
 
@@ -104,7 +103,7 @@ $(NAME) : $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
 
 %.o : %.c
-	gcc -I . -g -c $< -o $@
+	gcc -I inc -Wall -Wextra -Werror -c $< -o $@
 
 clean :
 	rm -f $(OBJECTS)

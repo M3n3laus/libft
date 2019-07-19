@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "ft_printf.h"
 
 int ft_printf(const char *format, ...)
 {
@@ -49,7 +49,6 @@ const char *parse_no_key(const char *format, t_string **result)
 const char *parse_key(const char *format, t_string **result, t_dispatch_table dispatch, va_list list)
 {
 	t_flag			flags;
-	int				x;
 	int				code;
 
 	code = -1;

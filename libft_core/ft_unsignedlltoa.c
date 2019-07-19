@@ -6,39 +6,38 @@
 /*   By: smaddox <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 16:55:23 by smaddox           #+#    #+#             */
-/*   Updated: 2019/07/17 15:47:08 by smaddox          ###   ########.fr       */
+/*   Updated: 2019/07/18 21:32:30 by smaddox          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t len(long long n, int base)
+static size_t		len(long long n, int base)
 {
 	int i;
 
 	i = 0;
-	while(n > 0)
+	while (n > 0)
 	{
 		i++;
 		n /= base;
 	}
-	return(i);
+	return (i);
 }
 
-char *ft_unsignedlltoa_base(unsigned long long n, int base)
+char				*ft_unsignedlltoa_base(unsigned long long n, int base)
 {
 	char	*str;
 	size_t	size;
-	int		sign;
 
 	size = len(n, base);
-	str  = ft_strnew(size);
+	str = ft_strnew(size);
 	str[0] = '0';
-	while(n > 0)
+	while (n > 0)
 	{
 		str[--size] = BASE_DIGITS[n % base];
 		n /= base;
 	}
-	return(str);
+	return (str);
 }
 	
