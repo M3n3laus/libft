@@ -6,7 +6,7 @@
 /*   By: smaddox <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 15:54:34 by smaddox           #+#    #+#             */
-/*   Updated: 2019/07/18 19:30:47 by smaddox          ###   ########.fr       */
+/*   Updated: 2019/07/19 15:00:53 by smaddox          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char				*ft_shorttoa_base(short n, int base)
 	char	*str;
 	size_t	size;
 	int		sign;
-	
+
 	sign = (n < 0) ? 1 : 0;
 	if (sign)
 	{
@@ -57,4 +57,3 @@ char				*ft_shorttoa_base(short n, int base)
 	}
 	return (str);
 }
-

@@ -5,7 +5,7 @@ int		percent(t_flag flags, va_list list, t_string **result)
 	t_string	*str;
 	t_rash_can	my_trashcan;
 
-	if(list)
+	if (list)
 	{
 		;
 	}
@@ -18,5 +18,5 @@ int		percent(t_flag flags, va_list list, t_string **result)
 	c_min_width(flags, &str, &my_trashcan);
 	*result = t_string_join(**result, *str);
 	garbage_day(&my_trashcan);
-	return(0);
+	return (0);
 }

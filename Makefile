@@ -6,7 +6,7 @@
 #    By: smaddox <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/29 11:23:26 by smaddox           #+#    #+#              #
-#    Updated: 2019/07/18 21:32:08 by smaddox          ###   ########.fr        #
+#    Updated: 2019/07/19 15:45:26 by smaddox          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,7 @@ ft_printf/xflag.c\
 ft_printf/pcflag.c\
 ft_printf/ft_printf.c\
 ft_printf/parse_utils.c\
+ft_printf/parse_utils2.c\
 ft_printf/string_ops.c\
 trashcan/trashcan.c
 

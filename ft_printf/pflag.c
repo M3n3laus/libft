@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int p(t_flag flags, va_list list, t_string **result)
+int		p(t_flag flags, va_list list, t_string **result)
 {
 	t_string			*string;
 	t_rash_can			my_trashcan;
@@ -14,19 +14,18 @@ int p(t_flag flags, va_list list, t_string **result)
 	p_min_width(&flags, &string, &my_trashcan);
 	*result = t_string_join(**result, *string);
 	garbage_day(&my_trashcan);
-	return(0);
+	return (0);
 }
 
-
-void p_min_width(t_flag *flags, t_string **string, t_rash_can *my_trashcan)
+void	p_min_width(t_flag *flags, t_string **string, t_rash_can *my_trashcan)
 {
 	t_string	newstr;
-	t_string 	append;
+	t_string	append;
 
 	append.str = "0x";
 	append.len = 2;
 	newstr.len = flags->min_width - ((*string)->len + 2);
-	if(newstr.len > 0)
+	if (newstr.len > 0)
 	{
 		newstr.str = ft_strnew(newstr.len);
 		mom(my_trashcan, T_CHAR, newstr.str);
@@ -40,13 +39,14 @@ void p_min_width(t_flag *flags, t_string **string, t_rash_can *my_trashcan)
 	}
 }
 
-void helper(t_flag *flags, t_string **string, t_rash_can *my_trashcan, t_string *newstr)
+void	helper(t_flag *flags, t_string **string,
+		t_rash_can *my_trashcan, t_string *newstr)
 {
 	t_string	append;
 
 	append.str = "0x";
 	append.len = 2;
-	if((contains('-', flags->h_flag, NUM_H_FLAGS)) != -1)
+	if ((contains('-', flags->h_flag, NUM_H_FLAGS)) != -1)
 	{
 		*string = t_string_join(append, **string);
 		mom(my_trashcan, T_CHAR, *string);
@@ -55,7 +55,7 @@ void helper(t_flag *flags, t_string **string, t_rash_can *my_trashcan, t_string 
 	}
 	else
 	{
-		if((contains('0', flags->h_flag, NUM_H_FLAGS)) != -1)
+		if ((contains('0', flags->h_flag, NUM_H_FLAGS)) != -1)
 		{
 			ft_memset(newstr->str, 48, newstr->len);
 			newstr->str = ft_strjoin(append.str, newstr->str);

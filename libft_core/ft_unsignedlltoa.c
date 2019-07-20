@@ -6,7 +6,7 @@
 /*   By: smaddox <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 16:55:23 by smaddox           #+#    #+#             */
-/*   Updated: 2019/07/18 21:32:30 by smaddox          ###   ########.fr       */
+/*   Updated: 2019/07/19 14:07:49 by smaddox          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,3 @@ char				*ft_unsignedlltoa_base(unsigned long long n, int base)
 	}
 	return (str);
 }
-	

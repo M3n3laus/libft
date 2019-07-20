@@ -6,16 +6,16 @@
 /*   By: smaddox <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 13:27:24 by smaddox           #+#    #+#             */
-/*   Updated: 2019/07/18 21:26:27 by smaddox          ###   ########.fr       */
+/*   Updated: 2019/07/19 15:28:35 by smaddox          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TRASHCAN
-# define TRASHCAN
+#ifndef TRASHCAN_H
+# define TRASHCAN_H
 
-#include "libft.h"
+# include "libft.h"
 
-#define DEFAULT_TRASH_SIZE 100
+# define DEFAULT_TRASH_SIZE 100
 
 typedef enum
 {
@@ -24,10 +24,10 @@ typedef enum
 	T_FLOAT
 }					t_my_type;
 
-typedef struct 		s_trash
+typedef struct		s_trash
 {
-	t_my_type			type;
-	union 
+	t_my_type		type;
+	union
 	{
 		char		*cp;
 		int			*ip;

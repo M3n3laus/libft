@@ -6,7 +6,7 @@
 /*   By: smaddox <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 19:26:28 by smaddox           #+#    #+#             */
-/*   Updated: 2019/07/18 21:09:40 by smaddox          ###   ########.fr       */
+/*   Updated: 2019/07/19 14:06:08 by smaddox          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ char					*ft_strjoin(char const *s1, char const *s2);
 size_t					ft_strlcat(char *dest, const char *src, size_t size);
 size_t					ft_strlen(char const *str);
 char					*ft_strmap(char const *s, char (*f)(char));
-char					*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char					*ft_strmapi(char const *s, char (*f)
+		(unsigned int, char));
 char					*ft_strncat(char *dest, const char *src, size_t n);
 int						ft_strcmp(const char *s1, const char *s2);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -76,7 +77,8 @@ char					*ft_strnstr(const char *haystack,
 char					*ft_strrchr(const char *str, int c);
 char					**ft_strsplit(char const *s, char c);
 char					*ft_strstr(char const *thehaystack, char const *needle);
-char					*ft_strsub(char const *s, unsigned int start, size_t len);
+char					*ft_strsub(char const *s, unsigned int
+		start, size_t len);
 char					*ft_strtrim(char const *s);
 int						ft_tolower(int c);
 int						ft_toupper(int c);

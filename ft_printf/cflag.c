@@ -1,11 +1,9 @@
-#include "ft_printf.h" 
+#include "ft_printf.h"
 
-
-int c(t_flag flags, va_list list, t_string **result)
+int		c(t_flag flags, va_list list, t_string **result)
 {
 	t_string		*str;
 	t_rash_can		my_trashcan;
-
 
 	str = (t_string*)malloc(sizeof(t_string));
 	new_trash_bag(&my_trashcan);
@@ -15,12 +13,12 @@ int c(t_flag flags, va_list list, t_string **result)
 	str->str[0] = va_arg(list, int);
 	c_min_width(flags, &str, &my_trashcan);
 	*result = t_string_join(**result, *str);
-	garbage_day(&my_trashcan);	
-	return(0);
+	garbage_day(&my_trashcan);
+	return (0);
 }
-	
 
-void	c_min_width(t_flag flags, t_string **string, t_rash_can *my_trashcan)
+void	c_min_width(t_flag flags,
+		t_string **string, t_rash_can *my_trashcan)
 {
 	t_string	temp;
 

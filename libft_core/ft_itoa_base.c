@@ -6,13 +6,13 @@
 /*   By: smaddox <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 17:13:12 by smaddox           #+#    #+#             */
-/*   Updated: 2019/07/18 19:41:50 by smaddox          ###   ########.fr       */
+/*   Updated: 2019/07/19 15:01:47 by smaddox          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t			len(int n, int base)
+static size_t				len(int n, int base)
 {
 	int i;
 
@@ -25,7 +25,7 @@ static size_t			len(int n, int base)
 	return (i);
 }
 
-static char				*handle_min(void)
+static char					*handle_min(void)
 {
 	char *str;
 
@@ -34,11 +34,11 @@ static char				*handle_min(void)
 	return (str);
 }
 
-char					*ft_itoa_base(int n, int base)
+char						*ft_itoa_base(int n, int base)
 {
-	char *str;
-	size_t size;
-	int sign;
+	char	*str;
+	size_t	size;
+	int		sign;
 
 	sign = (n < 0) ? 1 : 0;
 	if (sign)

@@ -1,10 +1,10 @@
 #include "ft_printf.h"
 
-void dhelper(t_package *package)
+void	dhelper(t_package *package)
 {
-	if(package->sign.str)
+	if (package->sign.str)
 	{
-		if(!((package->mws)) || package->mws->str[0] == 32)
+		if (!((package->mws)) || package->mws->str[0] == 32)
 		{
 			package->string = t_string_join(package->sign, *(package->string));
 			mom(&(package->trash), T_CHAR, package->string);
@@ -15,7 +15,7 @@ void dhelper(t_package *package)
 			mom(&(package->trash), T_CHAR, package->mws);
 		}
 	}
-	if(package->mws)
+	if (package->mws)
 	{
 		package->string = (contains('-',
 					package->flag.h_flag, NUM_H_FLAGS) != -1) ?

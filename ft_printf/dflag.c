@@ -1,5 +1,6 @@
-#include "ft_printf.h" 
-int d(t_flag flags, va_list list, t_string **result)
+#include "ft_printf.h"
+
+int		d(t_flag flags, va_list list, t_string **result)
 {
 	t_package	package;
 
@@ -23,7 +24,7 @@ int d(t_flag flags, va_list list, t_string **result)
 	d_formatter(&package);
 	*result = t_string_join(**result, *(package.string));
 	garbage_day(&(package.trash));
-	return(0);
+	return (0);
 }
 
 void	d_adjust_precision(t_package *package)
@@ -33,9 +34,10 @@ void	d_adjust_precision(t_package *package)
 	ft_bzero(&temp, sizeof(t_string));
 	if (package->flag.precision == 0 && package->string->str[0] == '0')
 		package->string->len = 0;
-	if (package->flag.precision < 9999 && package->flag.precision > package->string->len)
+	if (package->flag.precision < 9999 &&
+			package->flag.precision > package->string->len)
 	{
-		temp.len =  (package->flag.precision) - (package->string->len);
+		temp.len = (package->flag.precision) - (package->string->len);
 		temp.str = ft_strnew(temp.len);
 		mom(&(package->trash), T_CHAR, temp.str);
 		ft_memset(temp.str, 48, temp.len);
@@ -44,24 +46,24 @@ void	d_adjust_precision(t_package *package)
 	mom(&(package->trash), T_CHAR, package->string);
 }
 
-void d_formatter(t_package *package)
+void	d_formatter(t_package *package)
 {
-
 	d_sign(package);
 	d_adjust_precision(package);
 	d_min_width(package);
-	if(package->mws)
+	if (package->mws)
 		package->mws->len -= package->sign.len;
 	dhelper(package);
 }
 
-void d_sign(t_package *package)
+void	d_sign(t_package *package)
 {
 	if (package->string->str[0] == '-')
 	{
 		package->sign.str = "-";
 		package->sign.len = 1;
-		package->string->str = ft_strsub(package->string->str, 1, (package->string->len - 1));
+		package->string->str = ft_strsub(package->string->str,
+				1, (package->string->len - 1));
 		package->string->len = ft_strlen(package->string->str);
 		mom(&(package->trash), T_CHAR, package->string->str);
 	}
@@ -77,15 +79,13 @@ void d_sign(t_package *package)
 	}
 }
 
-
-void d_min_width(t_package *package)
+void	d_min_width(t_package *package)
 {
-	
 	if ((package->flag.min_width) - (package->string->len) > 0)
 	{
 		package->mws = (t_string*)malloc(sizeof(t_string));
 		mom(&(package->trash), T_CHAR, package->mws);
-		package->mws->len  = (package->flag.min_width) - (package->string->len);
+		package->mws->len = (package->flag.min_width) - (package->string->len);
 		package->mws->str = ft_strnew(package->mws->len);
 		mom(&(package->trash), T_CHAR, package->mws->str);
 		if (((contains('0', package->flag.h_flag, NUM_H_FLAGS)) != -1) &&
