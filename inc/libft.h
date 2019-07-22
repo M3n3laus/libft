@@ -6,7 +6,7 @@
 /*   By: smaddox <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 19:26:28 by smaddox           #+#    #+#             */
-/*   Updated: 2019/07/19 14:06:08 by smaddox          ###   ########.fr       */
+/*   Updated: 2019/07/21 16:32:56 by smaddox          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <limits.h>
+# include <stdio.h>
+# include <math.h>
 
 # define BASE_DIGITS "0123456789abcdef"
 
@@ -98,4 +100,6 @@ char					*ft_shorttoa_base(short n, int base);
 char					*ft_longlongtoa_base(long long n, int base);
 char					*ft_itoa_base(int n, int base);
 char					*ft_unsignedlltoa_base(unsigned long long n, int base);
+char					*ft_dtoa(double d, int precision);
+char					*ft_longdtoa(long double d, int precision);
 #endif

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   uflag.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smaddox <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/20 16:18:25 by smaddox           #+#    #+#             */
+/*   Updated: 2019/07/20 16:21:06 by smaddox          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	u(t_flag flags, va_list list, t_string **result)
@@ -8,7 +20,7 @@ int	u(t_flag flags, va_list list, t_string **result)
 	package.flag = flags;
 	new_trash_bag(&(package.trash));
 	package.string = (t_string*)malloc(sizeof(t_string));
-	package.string->str = 
+	package.string->str =
 		ft_unsignedlltoa_base(va_arg(list, unsigned long long), 10);
 	mom(&(package.trash), T_CHAR, package.string);
 	mom(&(package.trash), T_CHAR, package.string->str);

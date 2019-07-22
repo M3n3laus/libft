@@ -6,7 +6,7 @@
 /*   By: smaddox <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 13:27:24 by smaddox           #+#    #+#             */
-/*   Updated: 2019/07/19 15:28:35 by smaddox          ###   ########.fr       */
+/*   Updated: 2019/07/20 16:42:54 by smaddox          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,20 @@
 
 # define DEFAULT_TRASH_SIZE 100
 
-typedef enum
+typedef enum		e_type
 {
-	T_CHAR,
-	T_INT,
-	T_FLOAT
+	T_CHAR, T_INT, T_FLOAT
 }					t_my_type;
-
 typedef struct		s_trash
 {
 	t_my_type		type;
-	union
+	union			u_name
 	{
 		char		*cp;
 		int			*ip;
 		float		*fp;
 	}				u_piece;
 }					t_rash;
-
 typedef struct		s_trashcan
 {
 	t_rash			can[DEFAULT_TRASH_SIZE];

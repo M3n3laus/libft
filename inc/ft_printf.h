@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smaddox <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/20 16:22:08 by smaddox           #+#    #+#             */
+/*   Updated: 2019/07/21 18:31:45 by smaddox          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
@@ -120,6 +132,8 @@ int								xx(t_flag flags, va_list list,
 void							capital(t_package *package);
 int								f(t_flag flags, va_list list,
 		t_string **result);
+void							f_formatter(t_package *package);
+void							f_limit(t_package *package);
 void							print_flags(t_flag *flags);
 int								contains(char c, char *str, int len);
 int								str_num_len(const char *format);

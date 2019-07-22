@@ -6,7 +6,7 @@
 #    By: smaddox <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/29 11:23:26 by smaddox           #+#    #+#              #
-#    Updated: 2019/07/19 15:45:26 by smaddox          ###   ########.fr        #
+#    Updated: 2019/07/21 15:18:12 by smaddox          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,8 @@ libft_core/ft_shortoa.c\
 libft_core/ft_longlongtoa.c\
 libft_core/ft_itoa_base.c\
 libft_core/ft_unsignedlltoa.c\
+libft_core/ft_dtoa.c\
+libft_core/ft_longdtoa.c\
 ft_printf/d2flag.c\
 ft_printf/xxflag.c\
 ft_printf/cflag.c\
