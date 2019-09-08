@@ -16,11 +16,10 @@ int				ft_printf(const char *format, ...)
 {
 	va_list		list;
 	t_string	*result;
-	t_rash_can	my_trashcan;
+    int         len;
 
-	new_trash_bag(&my_trashcan);
 	result = (t_string*)malloc(sizeof(t_string));
-	mom(&my_trashcan, T_CHAR, result);
+	mom(result);
 	result->str = "\0";
 	result->len = 0;
 	INIT_TABLE(dispatch);
@@ -33,7 +32,9 @@ int				ft_printf(const char *format, ...)
 			format = parse_no_key(format, &result);
 	}
 	print_t_string(result);
-	return (result->len);
+	len = result->len;
+	garbage_day();
+	return (len);
 }
 
 const char		*parse_no_key(const char *format, t_string **result)
@@ -47,6 +48,7 @@ const char		*parse_no_key(const char *format, t_string **result)
 	{
 		newstr.str = ft_strsub(format, 0, newstr.len);
 		*result = t_string_join(**result, newstr);
+		t_string_mom(*result);
 		if (*temp)
 			free(temp);
 		free(newstr.str);

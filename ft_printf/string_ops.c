@@ -39,3 +39,9 @@ void		print_t_string(t_string *result)
 	while (++i < result->len)
 		ft_putchar(result->str[i]);
 }
+
+void        t_string_mom(t_string *pointer)
+{
+    mom(pointer);
+    mom(pointer->str);
+}

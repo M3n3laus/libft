@@ -19,12 +19,14 @@ void	dhelper(t_package *package)
 		if (!((package->mws)) || package->mws->str[0] == 32)
 		{
 			package->string = t_string_join(package->sign, *(package->string));
-			mom(&(package->trash), T_CHAR, package->string);
+			t_string_mom(package->string);
+			//mom(package->string);
 		}
 		else if (package->mws)
 		{
 			package->mws = t_string_join(package->sign, *(package->mws));
-			mom(&(package->trash), T_CHAR, package->mws);
+			t_string_mom(package->mws);
+			//mom(package->mws);
 		}
 	}
 	if (package->mws)
@@ -33,6 +35,6 @@ void	dhelper(t_package *package)
 					package->flag.h_flag, NUM_H_FLAGS) != -1) ?
 			t_string_join(*(package->string), *(package->mws)) :
 			t_string_join(*(package->mws), *(package->string));
-		mom(&(package->trash), T_CHAR, package->string);
+		t_string_mom(package->string);
 	}
 }

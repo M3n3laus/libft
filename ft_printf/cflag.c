@@ -15,22 +15,19 @@
 int		c(t_flag flags, va_list list, t_string **result)
 {
 	t_string		*str;
-	t_rash_can		my_trashcan;
 
 	str = (t_string*)malloc(sizeof(t_string));
-	new_trash_bag(&my_trashcan);
 	str->len = 1;
 	str->str = ft_strnew(1);
-	mom(&my_trashcan, T_CHAR, str->str);
+	mom(str->str);
 	str->str[0] = va_arg(list, int);
-	c_min_width(flags, &str, &my_trashcan);
+	c_min_width(flags, &str);
 	*result = t_string_join(**result, *str);
-	garbage_day(&my_trashcan);
+	t_string_mom(*result);
 	return (0);
 }
 
-void	c_min_width(t_flag flags,
-		t_string **string, t_rash_can *my_trashcan)
+void	c_min_width(t_flag flags, t_string **string)
 {
 	t_string	temp;
 
@@ -38,13 +35,14 @@ void	c_min_width(t_flag flags,
 	if (temp.len > 0)
 	{
 		temp.str = ft_strnew(temp.len);
-		mom(my_trashcan, T_CHAR, temp.str);
+		mom(temp.str);
 		if ((contains('-', flags.h_flag, NUM_H_FLAGS)) != -1)
 		{
 			ft_memset(temp.str, 32, temp.len);
 			*string = t_string_join(**string, temp);
-			mom(my_trashcan, T_CHAR, *string);
-			mom(my_trashcan, T_CHAR, (*string)->str);
+			t_string_mom(*string);
+			//mom(*string);
+			//mom((*string)->str);
 		}
 		else
 		{
@@ -53,8 +51,9 @@ void	c_min_width(t_flag flags,
 			else
 				ft_memset(temp.str, 32, temp.len);
 			*string = t_string_join(temp, **string);
-			mom(my_trashcan, T_CHAR, *string);
-			mom(my_trashcan, T_CHAR, (*string)->str);
+			t_string_mom(*string);
+			//mom(*string);
+			//mom((*string)->str);
 		}
 	}
 }

@@ -15,21 +15,20 @@
 int		p(t_flag flags, va_list list, t_string **result)
 {
 	t_string			*string;
-	t_rash_can			my_trashcan;
 
 	string = (t_string*)malloc(sizeof(t_string));
-	new_trash_bag(&my_trashcan);
-	mom(&my_trashcan, T_CHAR, string);
+	//mom(string);
 	string->str = ft_unsignedlltoa_base(va_arg(list, unsigned long long), 16);
 	string->len = ft_strlen(string->str);
-	mom(&my_trashcan, T_CHAR, string->str);
-	p_min_width(&flags, &string, &my_trashcan);
+	t_string_mom(string);
+	//mom(string->str);
+	p_min_width(&flags, &string);
 	*result = t_string_join(**result, *string);
-	garbage_day(&my_trashcan);
+	t_string_mom(*result);
 	return (0);
 }
 
-void	p_min_width(t_flag *flags, t_string **string, t_rash_can *my_trashcan)
+void	p_min_width(t_flag *flags, t_string **string)
 {
 	t_string	newstr;
 	t_string	append;
@@ -40,19 +39,18 @@ void	p_min_width(t_flag *flags, t_string **string, t_rash_can *my_trashcan)
 	if (newstr.len > 0)
 	{
 		newstr.str = ft_strnew(newstr.len);
-		mom(my_trashcan, T_CHAR, newstr.str);
+		mom(newstr.str);
 		ft_memset(newstr.str, 32, newstr.len);
-		helper(flags, string, my_trashcan, &newstr);
+		helper(flags, string, &newstr);
 	}
 	else
 	{
 		*string = t_string_join(append, **string);
-		mom(my_trashcan, T_CHAR, *string);
+		t_string_mom(*string);
 	}
 }
 
-void	helper(t_flag *flags, t_string **string,
-		t_rash_can *my_trashcan, t_string *newstr)
+void	helper(t_flag *flags, t_string **string, t_string *newstr)
 {
 	t_string	append;
 
@@ -61,9 +59,9 @@ void	helper(t_flag *flags, t_string **string,
 	if ((contains('-', flags->h_flag, NUM_H_FLAGS)) != -1)
 	{
 		*string = t_string_join(append, **string);
-		mom(my_trashcan, T_CHAR, *string);
+		t_string_mom(*string);
 		*string = t_string_join(**string, *newstr);
-		mom(my_trashcan, T_CHAR, *string);
+		t_string_mom(*string);
 	}
 	else
 	{
@@ -74,9 +72,9 @@ void	helper(t_flag *flags, t_string **string,
 		}
 		else
 			newstr->str = ft_strjoin(newstr->str, append.str);
-		mom(my_trashcan, T_CHAR, newstr->str);
+		mom(newstr->str);
 		newstr->len = ft_strlen(newstr->str);
 		*string = t_string_join(*newstr, **string);
-		mom(my_trashcan, T_CHAR, *string);
+		t_string_mom(*string);
 	}
 }

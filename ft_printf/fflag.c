@@ -17,23 +17,22 @@ int		f(t_flag flags, va_list list, t_string **result)
 	t_package package;
 
 	ft_bzero(&package, sizeof(package));
-	new_trash_bag(&(package.trash));
 	if (flags.precision == 9999)
 		flags.precision = 6;
 	package.flag = flags;
 	package.string = (t_string*)malloc(sizeof(t_string));
-	mom(&(package.trash), T_CHAR, package.string);
 	if (contains('L', flags.l_flag, 3) != -1)
 		package.string->str = ft_longdtoa(va_arg(list,
 					long double), package.flag.precision);
 	else
 		package.string->str = ft_dtoa(va_arg(list,
 					double), package.flag.precision);
-	mom(&(package.trash), T_CHAR, package.string->str);
+	t_string_mom(package.string);
 	package.string->len = ft_strlen(package.string->str);
 	package.flag.precision = 9999;
 	f_formatter(&package);
 	*result = t_string_join(**result, *(package.string));
+	t_string_mom(*result);
 	return (0);
 }
 
@@ -46,7 +45,7 @@ void	f_formatter(t_package *package)
 	{
 		package->string->str = ft_strjoin(package->string->str, ".");
 		package->string->len++;
-		mom(&(package->trash), T_CHAR, package->string->str);
+		mom(package->string->str);
 	}
 	d_min_width(package);
 	if (package->mws)

@@ -14,10 +14,8 @@
 
 const char		*set_h_flags(const char *format, t_flag *flags)
 {
-	int		valid;
 	int		i;
 
-	valid = 0;
 	format++;
 	if (*format == '%')
 		return (format);

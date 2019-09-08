@@ -15,23 +15,21 @@
 int		s(t_flag flags, va_list list, t_string **result)
 {
 	t_string	*temp;
-	t_rash_can	my_trashcan;
 
 	temp = (t_string*)malloc(sizeof(t_string));
-	new_trash_bag(&my_trashcan);
+	mom(temp);
 	temp->str = va_arg(list, char*);
 	if (!temp->str)
 		temp->str = "(null)";
 	temp->len = ft_strlen(temp->str);
-	str_precision(&flags, &temp, &my_trashcan);
-	str_min_width(&flags, &temp, &my_trashcan);
+	str_precision(&flags, &temp);
+	str_min_width(&flags, &temp);
 	*result = t_string_join(**result, *temp);
-	garbage_day(&my_trashcan);
+	t_string_mom(*result);
 	return (0);
 }
 
-void	str_precision(t_flag *flags, t_string
-		**string, t_rash_can *my_trashcan)
+void	str_precision(t_flag *flags, t_string **string)
 {
 	char *temp;
 
@@ -39,14 +37,13 @@ void	str_precision(t_flag *flags, t_string
 	{
 		(*string)->len = flags->precision;
 		temp = ft_strnew(flags->precision);
-		mom(my_trashcan, T_CHAR, temp);
+		mom(temp);
 		temp = ft_strncpy(temp, (*string)->str, flags->precision);
 		(*string)->str = temp;
 	}
 }
 
-void	str_min_width(t_flag *flags,
-		t_string **string, t_rash_can *my_trashcan)
+void	str_min_width(t_flag *flags, t_string **string)
 {
 	t_string	newstr;
 
@@ -54,13 +51,14 @@ void	str_min_width(t_flag *flags,
 	if (newstr.len > 0)
 	{
 		newstr.str = ft_strnew(newstr.len);
-		mom(my_trashcan, T_CHAR, newstr.str);
+		mom(newstr.str);
 		if ((contains('-', flags->h_flag, NUM_H_FLAGS)) != -1)
 		{
 			ft_memset(newstr.str, 32, newstr.len);
 			*string = t_string_join(**string, newstr);
-			mom(my_trashcan, T_CHAR, *string);
-			mom(my_trashcan, T_CHAR, (*string)->str);
+			t_string_mom(*string);
+			//mom(*string);
+			//mom((*string)->str);
 		}
 		else
 		{
@@ -69,8 +67,9 @@ void	str_min_width(t_flag *flags,
 			else
 				ft_memset(newstr.str, 32, newstr.len);
 			*string = t_string_join(newstr, **string);
-			mom(my_trashcan, T_CHAR, *string);
-			mom(my_trashcan, T_CHAR, (*string)->str);
+			t_string_mom(*string);
+			//mom(*string);
+			//mom((*string)->str);
 		}
 	}
 }

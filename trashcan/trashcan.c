@@ -6,63 +6,51 @@
 /*   By: smaddox <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 16:24:56 by smaddox           #+#    #+#             */
-/*   Updated: 2019/07/19 15:29:29 by smaddox          ###   ########.fr       */
+/*   Updated: 2019/08/08 12:25:24 by smaddox          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "trashcan.h"
 
-void	new_trash_bag(t_rash_can *my_trashcan)
-{
-	my_trashcan->top = -1;
-}
+t_rash_can g_can = {.top = -1};
 
-void	mom(t_rash_can *my_trashcan, t_my_type tp, ...)
+void	mom(void *pointer)
 {
-	va_list list;
-
-	if (!trash_overflow(my_trashcan))
+	if (!trash_overflow())
 	{
-		va_start(list, tp);
-		(my_trashcan->top)++;
-		my_trashcan->can[my_trashcan->top].type = tp;
-		if (my_trashcan->can[my_trashcan->top].type == T_CHAR)
-			my_trashcan->can[my_trashcan->top].u_piece.cp = va_arg(list, char*);
-		else if (my_trashcan->can[my_trashcan->top].type == T_INT)
-			my_trashcan->can[my_trashcan->top].u_piece.ip = va_arg(list, int*);
-		else if (my_trashcan->can[my_trashcan->top].type == T_FLOAT)
-			my_trashcan->can[my_trashcan->top].u_piece.fp = va_arg(list,
-					float*);
-		va_end(list);
+		g_can.top++;
+		g_can.can[g_can.top] = pointer;
 	}
+	/*
+	else if (trash_overflow())
+    {
+        garbage_day();
+        mom(pointer);
+    } */
 }
 
-int		trash_overflow(t_rash_can *my_trashcan)
+int		trash_overflow(void)
 {
-	if (my_trashcan->top == DEFAULT_TRASH_SIZE - 1)
+	if (g_can.top == DEFAULT_SIZE - 1)
+        return(1);
+	return (0);
+}
+
+int		trashcan_empty(void)
+{
+	if (g_can.top == -1)
 		return (1);
-	else
-		return (0);
+	return (0);
 }
 
-int		trashcan_empty(t_rash_can *my_trashcan)
+void	garbage_day(void)
 {
-	if (my_trashcan->top == -1)
-		return (1);
-	else
-		return (0);
-}
-
-void	garbage_day(t_rash_can *my_trashcan)
-{
-	while (!trashcan_empty(my_trashcan))
+    //debug info
+    //printf("\nemptying %d elements\n", g_can.top);
+	while (!trashcan_empty())
 	{
-		if (my_trashcan->can[my_trashcan->top].type == T_CHAR)
-			free(my_trashcan->can[my_trashcan->top].u_piece.cp);
-		else if (my_trashcan->can[my_trashcan->top].type == T_INT)
-			free(my_trashcan->can[my_trashcan->top].u_piece.ip);
-		else if (my_trashcan->can[my_trashcan->top].type == T_FLOAT)
-			free(my_trashcan->can[my_trashcan->top].u_piece.fp);
-		(my_trashcan->top)--;
+		free(g_can.can[g_can.top]);
+		g_can.top--;
 	}
 }

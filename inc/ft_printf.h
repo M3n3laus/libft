@@ -67,7 +67,6 @@ typedef struct					s_package
 {
 	t_flag						flag;
 	t_string					*string;
-	t_rash_can					trash;
 	t_string					*mws;
 	t_string					sign;
 }								t_package;
@@ -78,63 +77,42 @@ const char						*parse_key(const char *format, t_string
 		t_dispatch_table dispatch, va_list list);
 void							init_t_flag(t_flag *flags);
 const char						*set_h_flags(const char *format, t_flag *flags);
-const char						*set_min_width(const char *format,
-		t_flag *flags);
-const char						*set_precision(const char *format,
-		t_flag *flags);
-const char						*set_l_flags(const char *formatt,
-		t_flag *flags);
-const char						*set_arg_type(const char *format, t_flag *flags,
-		int *code, t_dispatch_table dispatch);
-void							result_watcher(t_string **watch,
-		t_string *result,
-		t_rash_can *my_trashcan);
-int								s(t_flag flags, va_list list,
-		t_string **result);
-void							str_precision(t_flag *flags, t_string **string,
-		t_rash_can *my_trashcan);
-void							str_min_width(t_flag *flags, t_string **string,
-		t_rash_can *my_trashcan);
-int								c(t_flag flags, va_list list,
-		t_string **result);
-void							c_min_width(t_flag flags, t_string **string,
-		t_rash_can *my_trashcan);
-int								p(t_flag flags, va_list list,
-		t_string **result);
-void							p_min_width(t_flag *flags, t_string **string,
-		t_rash_can *my_trashcan);
-void							helper(t_flag *flags, t_string
-		**string, t_rash_can
-		*my_trashcan, t_string *newstr);
+const char						*set_min_width(const char *format, t_flag *flags);
+const char						*set_precision(const char *format, t_flag *flags);
+const char						*set_l_flags(const char *formatt, t_flag *flags);
+const char						*set_arg_type(const char *format, t_flag *flags, int *code, t_dispatch_table dispatch);
+void							result_watcher(t_string **watch, t_string *result);
+int								s(t_flag flags, va_list list, t_string **result);
+void							str_precision(t_flag *flags, t_string **string);
+void							str_min_width(t_flag *flags, t_string **string);
+int								c(t_flag flags, va_list list, t_string **result);
+void							c_min_width(t_flag flags, t_string **string);
+int								p(t_flag flags, va_list list, t_string **result);
+void							p_min_width(t_flag *flags, t_string **string);
+void							helper(t_flag *flags, t_string **string, t_string *newstr);
 size_t							pointer_length(unsigned long long number);
 char							*convert_pointer(unsigned long long pointer);
-int								percent(t_flag flags, va_list list,
-		t_string **result);
-int								d(t_flag flags, va_list list,
-		t_string **result);
+int								percent(t_flag flags, va_list list, t_string **result);
+int								d(t_flag flags, va_list list, t_string **result);
 void							d_adjust_precision(t_package *package);
 void							d_formatter(t_package *package);
 void							d_sign(t_package *package);
 void							d_min_width(t_package *package);
 void							dhelper(t_package *package);
-int								o(t_flag flags, va_list list,
-		t_string **result);
+int								o(t_flag flags, va_list list, t_string **result);
 void							o_formatter(t_package *package);
 void							o_adjust_precision(t_package *package);
-int								u(t_flag flags, va_list list,
-		t_string **result);
-int								x(t_flag flags, va_list list,
-		t_string **result);
+int								u(t_flag flags, va_list list, t_string **result);
+int								x(t_flag flags, va_list list, t_string **result);
 void							x_formatter(t_package *package);
 void							hex_prefix(t_package *package);
-int								xx(t_flag flags, va_list list,
-		t_string **result);
+int								xx(t_flag flags, va_list list, t_string **result);
 void							capital(t_package *package);
-int								f(t_flag flags, va_list list,
-		t_string **result);
+int								f(t_flag flags, va_list list, t_string **result);
 void							f_formatter(t_package *package);
 void							f_limit(t_package *package);
 void							print_flags(t_flag *flags);
 int								contains(char c, char *str, int len);
 int								str_num_len(const char *format);
+void                            t_string_mom(t_string *pointer);
 #endif

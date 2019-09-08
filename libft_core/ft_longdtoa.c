@@ -34,8 +34,7 @@ static char			*check_limits(long double d)
 	return (NULL);
 }
 
-static char			*helper(long double d, int precision,
-		char *str, t_rash_can *trash)
+static char			*helper(long double d, int precision, char *str)
 {
 	char	*one;
 	int		n;
@@ -44,11 +43,11 @@ static char			*helper(long double d, int precision,
 	one = NULL;
 	if (precision != 0)
 	{
-		mom(trash, T_CHAR, str);
+		mom(str);
 		str = ft_strjoin(str, ".");
-		mom(trash, T_CHAR, str);
+		mom(str);
 		one = ft_strnew(precision);
-		mom(trash, T_CHAR, one);
+		mom(one);
 		while (precision--)
 		{
 			d = (d - (long long)d) * 10;
@@ -61,7 +60,6 @@ static char			*helper(long double d, int precision,
 
 char				*ft_longdtoa(long double d, int precision)
 {
-	t_rash_can	trash;
 	char		*str;
 	char		*sign;
 
@@ -69,7 +67,6 @@ char				*ft_longdtoa(long double d, int precision)
 	str = NULL;
 	if ((str = check_limits(d)))
 		return (str);
-	new_trash_bag(&trash);
 	if (d < 0)
 	{
 		sign = "-";
@@ -79,10 +76,9 @@ char				*ft_longdtoa(long double d, int precision)
 	str = ft_longlongtoa_base(d, 10);
 	if (sign)
 	{
-		mom(&trash, T_CHAR, str);
+		mom(str);
 		str = ft_strjoin(sign, str);
 	}
-	str = helper(d, precision, str, &trash);
-	garbage_day(&trash);
+	str = helper(d, precision, str);
 	return (str);
 }

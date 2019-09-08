@@ -22,13 +22,13 @@ int		x(t_flag flags, va_list list, t_string **result)
 	package.string->str =
 		ft_unsignedlltoa_base(va_arg(list,
 					unsigned long long), 16);
-	new_trash_bag(&(package.trash));
-	mom(&(package.trash), T_CHAR, package.string);
-	mom(&(package.trash), T_CHAR, package.string->str);
+    t_string_mom(package.string);
+	//mom(package.string);
+	//mom(package.string->str);
 	package.string->len = ft_strlen(package.string->str);
 	x_formatter(&package);
 	*result = t_string_join(**result, *(package.string));
-	garbage_day(&(package.trash));
+	t_string_mom(*result);
 	return (0);
 }
 
